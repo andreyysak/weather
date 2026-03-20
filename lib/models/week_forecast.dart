@@ -1,13 +1,15 @@
-class WeatherForecast {
+import 'common/weather_common.dart';
+
+class WeekForecast {
   final String day;
   final String date;
-  final int minTemp;
-  final int maxTemp;
+  final WeatherMainData main;
+  final WeatherDescription weather;
 
-  WeatherForecast({
+  WeekForecast({
     required this.day,
     required this.date,
-    required this.minTemp,
-    required this.maxTemp,
+    required this.main,
+    required this.weather,
   });
 }

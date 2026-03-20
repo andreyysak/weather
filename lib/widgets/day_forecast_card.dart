@@ -20,7 +20,7 @@ class DayForecastCard extends StatelessWidget {
           ),
         ),
         title: Text(
-          '${item.main.temp}°C - ${item.weather.main}',
+          '${item.main.temp.toInt()}°C - ${item.weather.main}',
           style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         subtitle: Text(item.weather.description),
@@ -29,15 +29,15 @@ class DayForecastCard extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                _buildInfoRow('Feels like', '${item.main.feelsLike}°C'),
+                _buildInfoRow('Feels like', '${item.main.feelsLike.toInt()}°C'),
                 const Divider(),
-                _buildInfoRow('Wind', '${item.wind.speed} m/s, ${item.wind.getWindDirection()}'),
+                _buildInfoRow('Wind', '${item.wind.speed} m/s, ${item.wind.getDirection()}'),
                 const Divider(),
                 _buildInfoRow('Humidity', '${item.main.humidity}%'),
                 const Divider(),
                 _buildInfoRow('Pressure', '${item.main.pressure} hPa'),
                 const Divider(),
-                _buildInfoRow('Min/Max', '${item.main.tempMin}° / ${item.main.tempMax}°'),
+                _buildInfoRow('Min/Max', '${item.main.tempMin.toInt()}° / ${item.main.tempMax.toInt()}°'),
               ],
             ),
           ),
