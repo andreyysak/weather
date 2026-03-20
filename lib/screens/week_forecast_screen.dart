@@ -1,18 +1,6 @@
 import 'package:flutter/material.dart';
-
-class WeatherForecast {
-  final String day;
-  final String date;
-  final int minTemp;
-  final int maxTemp;
-
-  WeatherForecast({
-    required this.day,
-    required this.date,
-    required this.minTemp,
-    required this.maxTemp,
-  });
-}
+import 'package:weather/models/week_forecast.dart';
+import 'package:weather/widgets/week_forecast_card.dart';
 
 class WeekForecastScreen extends StatelessWidget {
   WeekForecastScreen({super.key});
@@ -31,29 +19,17 @@ class WeekForecastScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(title),
+        title: const Text(title, style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold
+        ),),
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(8),
         itemCount: forecastData.length,
         itemBuilder: (context, index) {
-          final item = forecastData[index];
-          return Card(
-            child: ListTile(
-              leading: const Icon(Icons.wb_cloudy, color: Colors.blue),
-              title: Text('${item.day}, ${item.date}'),
-              subtitle: Text('Min: ${item.minTemp}°C'),
-              trailing: Text(
-                '${item.maxTemp}°C',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.redAccent,
-                ),
-              ),
-            ),
-          );
+          return WeekForecastCard(item: forecastData[index]);
         },
       ),
     );
