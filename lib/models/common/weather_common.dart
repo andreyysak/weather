@@ -38,12 +38,12 @@ class WeatherMainData {
 class Wind {
   final double speed;
   final double deg;
-  final double gust;
+  final double? gust;
 
   Wind({
     required this.speed,
     required this.deg,
-    required this.gust,
+    this.gust,
   });
 
   String getDirection() {
