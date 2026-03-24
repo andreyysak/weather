@@ -13,13 +13,8 @@ class WeekWeatherService {
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = jsonDecode(utf8.decode(response.bodyBytes));
 
-      print(jsonData);
-
-
-      // 2. Витягуємо масив з ключа 'list'
       final List<dynamic> listData = jsonData['list'];
 
-      // 3. Мапимо цей масив у список моделей
       return listData.map((item) => WeekForecast.fromJson(item)).toList();
     } else {
       throw Exception('Failed to load data');

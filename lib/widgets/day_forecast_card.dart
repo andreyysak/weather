@@ -12,7 +12,7 @@ class DayForecastCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       child: ExpansionTile(
         leading: Text(
-          item.time,
+          item.fullTime,
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
