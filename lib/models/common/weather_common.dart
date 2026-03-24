@@ -1,8 +1,15 @@
 class Coordinates {
-  final double lon;
   final double lat;
+  final double lon;
 
-  Coordinates({required this.lon, required this.lat});
+  Coordinates({required this.lat, required this.lon});
+
+  factory Coordinates.fromJson(Map<String, dynamic> json) {
+    return Coordinates(
+      lat: (json['lat'] as num).toDouble(),
+      lon: (json['lon'] as num).toDouble(),
+    );
+  }
 }
 
 class WeatherDescription {
@@ -15,6 +22,14 @@ class WeatherDescription {
     required this.description,
     required this.icon,
   });
+
+  factory WeatherDescription.fromJson(Map<String, dynamic> json) {
+    return WeatherDescription(
+      main: json['main'] ?? '',
+      description: json['description'] ?? '',
+      icon: json['icon'] ?? '',
+    );
+  }
 }
 
 class WeatherMainData {
@@ -33,6 +48,17 @@ class WeatherMainData {
     required this.pressure,
     required this.humidity,
   });
+
+  factory WeatherMainData.fromJson(Map<String, dynamic> json) {
+    return WeatherMainData(
+      temp: (json['temp'] as num).toDouble(),
+      feelsLike: (json['feels_like'] as num).toDouble(),
+      tempMin: (json['temp_min'] as num).toDouble(),
+      tempMax: (json['temp_max'] as num).toDouble(),
+      pressure: json['pressure'] as int,
+      humidity: json['humidity'] as int,
+    );
+  }
 }
 
 class Wind {
@@ -45,6 +71,14 @@ class Wind {
     required this.deg,
     this.gust,
   });
+
+  factory Wind.fromJson(Map<String, dynamic> json) {
+    return Wind(
+      speed: (json['speed'] as num).toDouble(),
+      deg: (json['deg'] as num).toDouble(),
+      gust: json['gust'] != null ? (json['gust'] as num).toDouble() : null,
+    );
+  }
 
   String getDirection() {
     if (deg >= 337.5 || deg < 22.5) return 'North';
